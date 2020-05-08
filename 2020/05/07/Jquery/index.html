@@ -191,17 +191,87 @@
 <li>HTML 事件函数</li>
 <li>JavaScript 特效和动画</li>
 <li>HTML DOM 遍历和修改</li>
-<li>AJAX</li>
-<li>Utilities<br>提示： 除此之外，Jquery还提供了大量的插件。</li>
+<li>AJAX<br>提示： 除此之外，Jquery还提供了大量的插件。</li>
 </ol>
-<h4 id="四-详细描述-amp-面试题"><a href="#四-详细描述-amp-面试题" class="headerlink" title="四. 详细描述 &amp; 面试题"></a>四. 详细描述 &amp; 面试题</h4><p>TODO</p>
-<ol>
-<li>onclick</li>
-<li>ajax</li>
-<li>事件委托</li>
-<li>冒泡</li>
-<li>异步 同步</li>
-<li>延时</li>
+<h4 id="四-详细描述-amp-面试题"><a href="#四-详细描述-amp-面试题" class="headerlink" title="四. 详细描述 &amp; 面试题"></a>四. 详细描述 &amp; 面试题</h4><ol>
+<li><p>jQuery四种事件绑定方式: .on() .bind() .live() .delegate() 的区别</p>
+<ul>
+<li><p>on    </p>
+<blockquote>
+<p>(1) 提供了一种统一绑定事件的方法<br>(2) 仍然提供了.delegate()的优点，当然如果需要你也可以直接用.bind()    </p>
+</blockquote>
+<p>  <code>$(&quot;ul&quot;).on(&quot;click&quot;,&quot;li&quot;,function () { alert(1); })</code></p>
+<hr>
+</li>
+<li><p>bind    </p>
+<blockquote>
+<p>(1) 这是最直接的绑定方法。jQuery 扫描文档找到所有 $(‘a’) 元素，然后给每一个找到的元素的 click 事件绑定处理函数。<br>(2) 当元素很多时，会出现效率问题; 当页面加载完的时候，你才可以进行bind()，所以可能产生效率问题  </p>
+</blockquote>
+<p>  <code>$( &quot;a&quot; ).bind( &quot;click&quot;, function( e ) { alert(1);} )</code></p>
+<hr>
+</li>
+<li><p>live    </p>
+<blockquote>
+<p>(1) JQuery把alert函数绑定到$(document)元素上，并使用’click’和’a’作为参数。任何时候只要有事件冒泡到document节点上，它就查看该事件是否是一个click事件，以及该事件的目标元素与’a’这一CSS选择器是否匹配，如果都是的话，则执行函数。<br>(2) live方法有一个最大的缺点，只能用css选择器，用起来很不方便。<br>(3) 从1.7开始已经不被推荐了，所以你也要开始逐步淘汰它了。 </p>
+</blockquote>
+<p>  <code>$(&#39;a&#39;).live(&#39;click&#39;,function() { alert(1); })</code></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>delegate<br>  <code>$(&quot;ul&quot;).delegate(&quot;li&quot;,&quot;click&quot;,function(){ alert(1); })</code></li>
+</ul>
+<hr>
+<p> <strong>结论</strong>    </p>
+<blockquote>
+<p>(1) 我们可以用.on()来代替上述的3种方法<br>(2) 用.bind()的代价是非常大的，它会把相同的一个事件处理程序hook到所有匹配的DOM元素上<br>(3) 不要再用.live()了，它已经不再被推荐了，而且还有许多问题<br>(4) .delegate()会提供很好的方法来提高效率，同时我们可以添加一事件处理方法到动态添加的元素上    </p>
+</blockquote>
+<hr>
+</li>
+<li><p>jQuery 点击事件 click() 和onclick() 区别<br>TODO</p>
+</li>
+<li><p>ajax</p>
+</li>
+<li><p>关于事件冒泡、事件捕获和事件委托</p>
+<ul>
+<li><p>事件冒泡</p>
+<ul>
+<li><p>会从当前触发的事件目标一级一级往上传递，依次触发，直到document为止。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box3&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&#x2F;&#x2F;点击 #box3, 触发顺序是 box3&gt;box2&gt;box1，这种现象就是事件冒泡。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>阻止冒泡： <code>e.stopPropagation()</code></p>
+</li>
+</ul>
+<hr>
+</li>
+<li><p>事件捕获</p>
+<ul>
+<li><p>会从document开始触发，一级一级往下传递，依次触发，直到真正事件目标为止。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box3&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&#x2F;&#x2F;点击 #box3, 触发顺序是 box1&gt;box2&gt;box3，这种现象就是事件捕获。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+</li>
+<li><p>事件委托</p>
+<ul>
+<li>又称事件代理，通过监听一个父元素，来给不同的子元素绑定事件，减少监听次数，从而提升速度。    </li>
+<li>换种说法：委托它们父级代为执行事件。我们只用给父元素添加监听器，而不用再一步步的去遍历子元素，在子元素上添加事件监听。</li>
+<li>事件委托首先可以极大减少事件绑定次数，提高性能；其次可以让新加入的子元素也可以拥有相同的操作。</li>
+<li>事件委托就是利用事件冒泡原理实现的.</li>
+<li>自动绑定动态添加的元素.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id&#x3D;&quot;list&quot;&gt;</span><br><span class="line">    &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;4&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;5&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;方法一：</span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;ul&quot;).on(&quot;click&quot;,&quot;li&quot;,function () &#123;</span><br><span class="line">        alert(1);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;方法二：</span><br><span class="line">$(function()&#123;</span><br><span class="line">    $(&quot;#list&quot;).delegate(&quot;li&quot;,&quot;click&quot;,function()&#123;</span><br><span class="line">        alert(1);</span><br><span class="line">    &#125;)</span><br><span class="line">    var $li &#x3D; $(&#39;&lt;li&gt;6&lt;&#x2F;li&gt;&#39;);</span><br><span class="line">    $(&quot;#list&quot;).append($li);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></code></pre><ol start="5">
+<li>异步 同步<br>TODO</li>
+<li>deferred<br>TODO</li>
 </ol>
 <h4 id="五-参考文档"><a href="#五-参考文档" class="headerlink" title="五. 参考文档"></a>五. <a href="https://www.html.cn/jqapi-1.9/" target="_blank" rel="noopener">参考文档</a></h4>
 
