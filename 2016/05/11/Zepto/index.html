@@ -241,14 +241,14 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Zepto(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;   </span><br><span class="line">  <span class="keyword">var</span> $list = $(<span class="string">'&lt;ul&gt;&lt;li&gt;Zepto 插入&lt;/li&gt;&lt;/ul&gt;'</span>, &#123; </span><br><span class="line">    id: <span class="string">'insert-by-zepto'</span> </span><br><span class="line">  &#125;); </span><br><span class="line">  $list.appendTo($(<span class="string">'body'</span>)); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>更多内容请参考<a href="https://blog.csdn.net/kongjiea/article/details/42522305" target="_blank" rel="noopener">链接</a></p>
-<h3 id="四-Zepto和jquery可以同时使用吗"><a href="#四-Zepto和jquery可以同时使用吗" class="headerlink" title="四. Zepto和jquery可以同时使用吗 ?"></a>四. Zepto和jquery可以同时使用吗 ?</h3><p>一般情况下，我们在选择这类库的时候都 <strong>只用一个</strong>，要么jquery,要么Zepto<br>但是遇到某些特殊情况时，需要引入某个插件，可能会出现两个共用，这时需要对这两个库进行一些处理。</p>
+<h3 id="六-Zepto和jquery可以同时使用吗"><a href="#六-Zepto和jquery可以同时使用吗" class="headerlink" title="六. Zepto和jquery可以同时使用吗 ?"></a>六. Zepto和jquery可以同时使用吗 ?</h3><p>一般情况下，我们在选择这类库的时候都 <strong>只用一个</strong>，要么jquery,要么Zepto<br>但是遇到某些特殊情况时，需要引入某个插件，可能会出现两个共用，这时需要对这两个库进行一些处理。</p>
 <ul>
 <li><p>方法一：<br>声明下 var jq=$.noConflict();<br>这样就可以用jq代替jquery的$</p>
 </li>
 <li><p>方法二：<br>window.$$ = window.Zepto = Zepto;<br>这样就可以用$$替代zepto</p>
 </li>
 </ul>
-<h3 id="六-Zepto-官方文档-https-www-html-cn-doc-zeptojs-api"><a href="#六-Zepto-官方文档-https-www-html-cn-doc-zeptojs-api" class="headerlink" title="六.  Zepto 官方文档 https://www.html.cn/doc/zeptojs_api/"></a>六.  Zepto 官方文档 <a href="https://www.html.cn/doc/zeptojs_api/" target="_blank" rel="noopener">https://www.html.cn/doc/zeptojs_api/</a></h3>
+<h3 id="七-Zepto-官方文档-https-www-html-cn-doc-zeptojs-api"><a href="#七-Zepto-官方文档-https-www-html-cn-doc-zeptojs-api" class="headerlink" title="七.  Zepto 官方文档 https://www.html.cn/doc/zeptojs_api/"></a>七.  Zepto 官方文档 <a href="https://www.html.cn/doc/zeptojs_api/" target="_blank" rel="noopener">https://www.html.cn/doc/zeptojs_api/</a></h3>
 
                 <hr>
 
