@@ -13,11 +13,11 @@
 
     <title>
         
-          React - DXM的博客
+          Javascript 总结 - DXM的博客
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2020/05/07/React/">
+    <link rel="canonical" href="http://yoursite.com/2016/10/31/JS/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -155,11 +155,11 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>React</h1>
+                    <h1>Javascript 总结</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         <!-- Posted by DXM on -->
-                        2020-05-07
+                        2016-10-31
                     </span>
                 </div>
             </div>
@@ -178,12 +178,42 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>React 是一个声明式，高效且灵活的用于构建用户界面的 JavaScript 库。<br>使用 React 可以将一些简短、独立的代码片段组合成复杂的 UI 界面，这些代码片段被称作“组件”。  </p>
-<h5 id="1-声明式"><a href="#1-声明式" class="headerlink" title="1. 声明式"></a>1. 声明式</h5><p>即自动dom操作，开发者只需要声明给react，无须考虑如何显示到页面。<br>React 使创建交互式 UI 变得轻而易举。为你应用的每一个状态设计简洁的视图，当数据改变时 React 能有效地更新并正确地渲染组件。<br>以声明式编写 UI，可以让你的代码更加可靠，且方便调试。</p>
-<h5 id="2-组件化"><a href="#2-组件化" class="headerlink" title="2. 组件化"></a>2. 组件化</h5><p>创建拥有各自状态的组件，再由这些组件构成更加复杂的 UI。<br>组件逻辑使用 JavaScript 编写而非模版，因此你可以轻松地在应用中传递数据，并使得状态与 DOM 分离。</p>
-<hr>
-<p><a href="https://github.com/dongxiaomin/React_Practice/blob/master/README.md" target="_blank" rel="noopener">基础知识</a></p>
-<p><a href="https://github.com/dongxiaomin/React_Demo/blob/master/README.md" target="_blank" rel="noopener">小型财务系统实例总结</a></p>
+                <h3 id="一-闭包"><a href="#一-闭包" class="headerlink" title="一. 闭包"></a>一. 闭包</h3><p>就是一个函数，可以 访问并操作 其他函数内部变量的函数。<br>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。<br>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p>
+<p><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="noopener">参考链接</a></p>
+<p><strong>实例</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n=<span class="number">999</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result=f1();</span><br><span class="line">result(); <span class="comment">// 999</span></span><br><span class="line"><span class="comment">//f2函数，就是闭包</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二-对象"><a href="#二-对象" class="headerlink" title="二. 对象"></a>二. 对象</h3><p>JavaScript 中的所有事物都是对象：字符串、数字、数组、日期，等等。<br>在 JavaScript 中，对象是拥有属性和方法的数据。</p>
+<p><strong>实例</strong><br>当您像这样声明一个 JavaScript 变量时：<code>var txt = &quot;Hello&quot;;</code><br>您实际上已经创建了一个 JavaScript 字符串对象。字符串对象拥有内建的属性 length。对于上面的字符串来说，length 的值是 5。字符串对象同时拥有若干个内建的方法。</p>
+<p>属性：<br><code>txt.length=5</code></p>
+<p>方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">txt.indexOf() <span class="comment">//返回某个指定的字符串值在字符串中首次出现的位置</span></span><br><span class="line">txt.replace() <span class="comment">//用于在字符串中用一些字符替换另一些字符</span></span><br><span class="line">txt.search() <span class="comment">//用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。如果没有找到任何匹配的子串，则返回 -1。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三-原型-amp-原型链"><a href="#三-原型-amp-原型链" class="headerlink" title="三. 原型 &amp; 原型链"></a>三. 原型 &amp; 原型链</h3><ol>
+<li><p>原型<br>每一个构造函数都有一个原型，构造函数有一个prototype属性指向这个原型。<br>在js中，<strong>对象都有<strong>proto</strong>属性</strong>，一般这个是被称为隐式的原型，该隐式原型指向构造该对象的构造函数的原型。</p>
+</li>
+<li><p>原型链<br>由于<strong>proto</strong>是任何对象都有的属性。而 js 里面 万物皆对象，所以会形成一条 <strong>proto</strong> 连起来的链条。<br>访问<strong>proto</strong> 必须到头，并且值为 Null。</p>
+</li>
+</ol>
+<p><strong>实例</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    key: <span class="string">"value"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个实例, 就是使用这个new来将构造函数实例化</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br></pre></td></tr></table></figure>
+
+<p><code>A.prototype == a.__proto__</code><br><img src="../img/1.png" alt="Image"><br><img src="./img/2.png" alt="null"></p>
+<p>在A函数的原型上定义属性和方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A.prototype.b = <span class="number">3</span>;</span><br><span class="line">A.prototype.bFun = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">1</span>)&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="./img/3.png" alt="继承"></p>
+<h3 id="三-正则"><a href="#三-正则" class="headerlink" title="三. 正则"></a>三. 正则</h3><p><a href="https://regexper.com/" target="_blank" rel="noopener">https://regexper.com/</a></p>
+<ol>
+<li><p>矩形</p>
+</li>
+<li></li>
+<li><p>直线</p>
+</li>
+<li><h3 id="四-SVG-实例："><a href="#四-SVG-实例：" class="headerlink" title="四. SVG 实例："></a>四. SVG 实例：</h3></li>
+</ol>
+<p><a href="https://www.bilibili.com/video/BV1EE411x74i?p=2" target="_blank" rel="noopener">参考链接</a></p>
+<p><strong>倒计时</strong></p>
+<pre><code class="html"></code></pre>
 
 
                 <hr>
@@ -192,9 +222,13 @@
 
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/2020/05/07/React/" data-toggle="tooltip" data-placement="top" title="React">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
-                            <a href="/2016/10/31/JS/" data-toggle="tooltip" data-placement="top" title="Javascript 总结">Next Post &rarr;</a>
+                            <a href="/2016/09/15/SVG/" data-toggle="tooltip" data-placement="top" title="SVG">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
