@@ -183,6 +183,7 @@
 <p>Vue 是数据驱动，通过数据来显示视图层而不是节点操作。<br>处理数据交互的时候挺适合 MVVM 设计模式的。</p>
 <h3 id="二-Vue2-x响应式数据原理-双向数据绑定原理是什么"><a href="#二-Vue2-x响应式数据原理-双向数据绑定原理是什么" class="headerlink" title="二. Vue2.x响应式数据原理 (双向数据绑定原理是什么)"></a>二. Vue2.x响应式数据原理 (双向数据绑定原理是什么)</h3><p>Vue在初始化数据时，会使用Object.defineProperty重新定义data中的所有属性，当页面使用对应属性时，首先会进行依赖收集(收集当前组件的watcher)如果属性发生变化会通知相关依赖进行更新操作(发布订阅)。</p>
 <p>vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</p>
+<p>Proxy可以直接监听对象而非属性<br>Proxy可以直接监听数组的变化<br>Proxy返回的是一个新对象,我们可以只操作新的对象达到目的,而Object.defineProperty只能遍历对象属性直接修改</p>
 <h3 id="三-vue生命周期的理解"><a href="#三-vue生命周期的理解" class="headerlink" title="三. vue生命周期的理解"></a>三. vue生命周期的理解</h3><p>Vue 实例从创建到销毁的过程，就是生命周期。也就是从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、卸载等一系列过程，我们称这是 Vue 的生命周期。</p>
 <p>vue生命周期总共分为8个阶段: 创建前/后，载入前/后，更新前/后， 销毁前/后。</p>
 <table>
@@ -247,6 +248,7 @@
 <p>abstract : 支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.</p>
 <h3 id="六-vuex是什么"><a href="#六-vuex是什么" class="headerlink" title="六. vuex是什么"></a>六. vuex是什么</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。“store” 基本上就是一个容器，它包含着你的应用中大部分的状态 ( state )。</p>
 <p>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</p>
+<p>vuex 就是一个仓库，仓库里放了很多对象。其中 state 就是数据源存放地，对应于一般 vue 对象里面的 data<br>state 里面存放的数据是响应式的，vue 组件从 store 读取数据，若是 store 中的数据发生改变，依赖这相数据的组件也会发生更新<br>它通过 mapState 把全局的 state 和 getters 映射到当前组件的 computed 计算属性</p>
 <h3 id="七-Vuex-有哪几种属性？"><a href="#七-Vuex-有哪几种属性？" class="headerlink" title="七. Vuex 有哪几种属性？"></a>七. Vuex 有哪几种属性？</h3><p>主要包括以下几个模块：<br>State：定义了应用状态的数据结构，可以在这里设置默认的初始状态。<br>Getter：允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。<br>Mutation：是唯一更改 store 中状态的方法，且必须是同步函数。<br>Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。<br>Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。</p>
 <p>state：基本数据<br>getters：从基本数据派生的数据<br>mutations：提交更改数据的方法，同步！<br>actions：像一个装饰器，包裹 mutations，使之可以异步。<br>modules：模块化 Vuex。</p>
 <h3 id="八-computed和watch有什么区别"><a href="#八-computed和watch有什么区别" class="headerlink" title="八. computed和watch有什么区别?"></a>八. computed和watch有什么区别?</h3><p>computed:</p>
@@ -273,6 +275,11 @@
 <li>其他文件：定义的一些项目信息，说明等等。</li>
 </ol>
 <h3 id="九-axios"><a href="#九-axios" class="headerlink" title="九. axios"></a>九. axios</h3><p>axios 是一个基于 promise 的 HTTP 库，可以发送 get，post 请求，正是由于 Vue、React 的出现，促使了 axios 轻量级库的出现</p>
+<h3 id="十-Vue与React的区别"><a href="#十-Vue与React的区别" class="headerlink" title="十. Vue与React的区别"></a>十. Vue与React的区别</h3><p>vue组件分为全局注册和局部注册，在react中都是通过import相应组件，然后模版中引用；</p>
+<p>props是可以动态变化的，子组件也实时更新，在react中官方建议props要像纯函数那样，输入输出一致对应，而且不太建议通过props来更改视图；</p>
+<p>子组件一般要显示地调用props选项来声明它期待获得的数据。而在react中不必需，另两者都有props校验机制；</p>
+<p>Vue增加的语法糖 computed 和 watch ，而在React中需要自己写一套逻辑来实现；</p>
+<h3 id="十一-Vue的性能优化"><a href="#十一-Vue的性能优化" class="headerlink" title="十一. Vue的性能优化"></a>十一. Vue的性能优化</h3><p>尽量减少data中的数据，data中的数据都会增加getter和setter，会收集对应的watcher<br>v-if和v-for不能连用<br>SPA 页面采用keep-alive缓存组件<br>在更多的情况下，使用v-if替代v-show<br>key保证唯一<br>使用路由懒加载、异步组件防抖、节流<br>第三方模块按需导入<br>长列表滚动到可视区域动态加载<br>图片懒加载</p>
 
 
                 <hr>
