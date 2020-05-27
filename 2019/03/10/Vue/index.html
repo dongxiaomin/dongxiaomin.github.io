@@ -180,6 +180,7 @@
 
                 <p><a href="https://es6.ruanyifeng.com/" target="_blank" rel="noopener">ES6 官方文档</a></p>
 <h3 id="一-什么是-MVVM？"><a href="#一-什么是-MVVM？" class="headerlink" title="一. 什么是 MVVM？"></a>一. 什么是 MVVM？</h3><p>MVC control<br>MVVM 是 Model-View-ViewModel 的缩写，MVVM 是一种设计思想。Model 层代表数据模式，也可以在 Model 中定义数据修改和操作的业务逻辑；View 代表 UI 组件，它负责将数据模型转化为 UI 展现出来，ViewModel 是一个同步 View 和 Model 的对象。</p>
+<p>Vue 是数据驱动，通过数据来显示视图层而不是节点操作。<br>处理数据交互的时候挺适合 MVVM 设计模式的。</p>
 <h3 id="二-Vue2-x响应式数据原理-双向数据绑定原理是什么"><a href="#二-Vue2-x响应式数据原理-双向数据绑定原理是什么" class="headerlink" title="二. Vue2.x响应式数据原理 (双向数据绑定原理是什么)"></a>二. Vue2.x响应式数据原理 (双向数据绑定原理是什么)</h3><p>Vue在初始化数据时，会使用Object.defineProperty重新定义data中的所有属性，当页面使用对应属性时，首先会进行依赖收集(收集当前组件的watcher)如果属性发生变化会通知相关依赖进行更新操作(发布订阅)。</p>
 <p>vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</p>
 <h3 id="三-vue生命周期的理解"><a href="#三-vue生命周期的理解" class="headerlink" title="三. vue生命周期的理解"></a>三. vue生命周期的理解</h3><p>Vue 实例从创建到销毁的过程，就是生命周期。也就是从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、卸载等一系列过程，我们称这是 Vue 的生命周期。</p>
@@ -225,13 +226,15 @@
 </tr>
 </tbody></table>
 <p>异步请求适合在哪个生命周期调用？<br><strong>是在mounted生命周期中调用的，而实际上也可以在created生命周期中调用。</strong></p>
-<h3 id="二-父组件向子组件传值的方法？"><a href="#二-父组件向子组件传值的方法？" class="headerlink" title="二. 父组件向子组件传值的方法？"></a>二. 父组件向子组件传值的方法？</h3><p>使用props，父组件可以使用props向子组件传递数据。</p>
-<h3 id="三-子组件向父组件传值的方法？"><a href="#三-子组件向父组件传值的方法？" class="headerlink" title="三. 子组件向父组件传值的方法？"></a>三. 子组件向父组件传值的方法？</h3><p>父组件向子组件传递事件方法，子组件通过$emit触发事件，回调给父组件。</p>
-<h3 id="四-常用的指令有哪些"><a href="#四-常用的指令有哪些" class="headerlink" title="四. 常用的指令有哪些"></a>四. 常用的指令有哪些</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">if</span>=<span class="string">"seen"</span> <span class="comment">//判断是否隐藏</span></span><br><span class="line">v-<span class="keyword">for</span>=<span class="string">"todo in todos"</span> <span class="comment">//数据循环出来</span></span><br><span class="line">v-on:click=<span class="string">"reverseMessage"</span></span><br><span class="line">v-model=<span class="string">"message"</span> <span class="comment">//实现双向绑定, 一般用在表达输入，很轻松的实现表单控件和数据的双向绑定</span></span><br><span class="line">v-bind:<span class="class"><span class="keyword">class</span> //绑定一个属性</span></span><br><span class="line">v-html: //更新元素的 innerHTML</span><br></pre></td></tr></table></figure>
+<h3 id="四-父组件向子组件传值的方法？"><a href="#四-父组件向子组件传值的方法？" class="headerlink" title="四. 父组件向子组件传值的方法？"></a>四. 父组件向子组件传值的方法？</h3><p>使用props，父组件可以使用props向子组件传递数据。</p>
+<h3 id="五-子组件向父组件传值的方法？"><a href="#五-子组件向父组件传值的方法？" class="headerlink" title="五. 子组件向父组件传值的方法？"></a>五. 子组件向父组件传值的方法？</h3><p>父组件向子组件传递事件方法，子组件通过$emit触发事件，回调给父组件。</p>
+<h3 id="六-常用的指令有哪些"><a href="#六-常用的指令有哪些" class="headerlink" title="六. 常用的指令有哪些"></a>六. 常用的指令有哪些</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">if</span>=<span class="string">"seen"</span> <span class="comment">//判断是否隐藏</span></span><br><span class="line">v-<span class="keyword">for</span>=<span class="string">"todo in todos"</span> <span class="comment">//数据循环出来</span></span><br><span class="line">v-on:click=<span class="string">"reverseMessage"</span></span><br><span class="line">v-model=<span class="string">"message"</span> <span class="comment">//实现双向绑定, 一般用在表达输入，很轻松的实现表单控件和数据的双向绑定</span></span><br><span class="line">v-bind:<span class="class"><span class="keyword">class</span> //绑定一个属性</span></span><br><span class="line">v-html: //更新元素的 innerHTML</span><br></pre></td></tr></table></figure>
 <p>v-show 与 v-if: 条件渲染, 注意二者区别</p>
 <p>v-show小结：<br>1、v-show仅仅控制元素的显示方式，通过display属性的none<br>2、当我们需要经常切换某个元素的显示/隐藏时，使用v-show会更加节省性能上的开销</p>
 <p>v-if小结：<br>1、v-if会控制这个DOM节点的存在与否。<br>2、如果在运行时条件很少改变，则使用 v-if 较好。</p>
-<h3 id="五-Vue的路由实现-（vue-router-路由模式有几种）"><a href="#五-Vue的路由实现-（vue-router-路由模式有几种）" class="headerlink" title="五. Vue的路由实现 （vue-router 路由模式有几种）"></a>五. Vue的路由实现 （vue-router 路由模式有几种）</h3><ol>
+<h3 id="七-Vue的路由实现-（vue-router-路由模式有几种）"><a href="#七-Vue的路由实现-（vue-router-路由模式有几种）" class="headerlink" title="七. Vue的路由实现 （vue-router 路由模式有几种）"></a>七. Vue的路由实现 （vue-router 路由模式有几种）</h3><p>vue-router 是 Vue.js 官方的路由管理器，它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。包含的功能有：</p>
+<p>在 router 目录下的 index.js 文件中，对 path 属性加上 /:id。使用 router 对象的 params.id，例如：this.$route.params.id。</p>
+<ol>
 <li>hash: 使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；<br>hash 模式的实现原理<br>location.hash的值实际就是URL中#后面的东西。</li>
 </ol>
 <p>特性：<br>URL 中 hash 值只是客户端的一种状态，也就是说当向服务器端发出请求时，hash 部分不会被发送；<br>hash 值的改变，都会在浏览器的访问历史中增加一个记录。因此我们能通过浏览器的回退、前进按钮控制hash 的切换；<br>可以通过 a 标签，并设置 href 属性，当用户点击这个标签后，URL 的 hash 值会发生改变；或者使用  JavaScript 来对 loaction.hash 进行赋值，改变 URL 的 hash 值；</p>
@@ -243,7 +246,33 @@
 </ol>
 <p>abstract : 支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.</p>
 <h3 id="六-vuex是什么"><a href="#六-vuex是什么" class="headerlink" title="六. vuex是什么"></a>六. vuex是什么</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。“store” 基本上就是一个容器，它包含着你的应用中大部分的状态 ( state )。</p>
-<h3 id="六-Vuex-有哪几种属性？"><a href="#六-Vuex-有哪几种属性？" class="headerlink" title="六. Vuex 有哪几种属性？"></a>六. Vuex 有哪几种属性？</h3><p>主要包括以下几个模块：<br>State：定义了应用状态的数据结构，可以在这里设置默认的初始状态。<br>Getter：允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。<br>Mutation：是唯一更改 store 中状态的方法，且必须是同步函数。<br>Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。<br>Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。</p>
+<p>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</p>
+<h3 id="七-Vuex-有哪几种属性？"><a href="#七-Vuex-有哪几种属性？" class="headerlink" title="七. Vuex 有哪几种属性？"></a>七. Vuex 有哪几种属性？</h3><p>主要包括以下几个模块：<br>State：定义了应用状态的数据结构，可以在这里设置默认的初始状态。<br>Getter：允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。<br>Mutation：是唯一更改 store 中状态的方法，且必须是同步函数。<br>Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。<br>Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。</p>
+<p>state：基本数据<br>getters：从基本数据派生的数据<br>mutations：提交更改数据的方法，同步！<br>actions：像一个装饰器，包裹 mutations，使之可以异步。<br>modules：模块化 Vuex。</p>
+<h3 id="八-computed和watch有什么区别"><a href="#八-computed和watch有什么区别" class="headerlink" title="八. computed和watch有什么区别?"></a>八. computed和watch有什么区别?</h3><p>computed:</p>
+<ol>
+<li>computed是计算属性,也就是计算值,它更多用于计算值的场景</li>
+<li>computed具有缓存性,computed的值在getter执行后是会缓存的，只有在它依赖的属性值改变之后，下一次获取computed的值时才会重新调用对应的getter来计算</li>
+<li>computed适用于计算比较消耗性能的计算场景</li>
+</ol>
+<p>watch:</p>
+<ol>
+<li>更多的是「观察」的作用,类似于某些数据的监听回调,用于观察props $emit或者本组件的值,当数据变化时来执行回调进行后续操作</li>
+<li>无缓存性，页面重新渲染时值不变化也会执行</li>
+</ol>
+<p>总结：</p>
+<ol>
+<li>当我们要进行数值计算,而且依赖于其他数据，那么把这个数据设计为computed</li>
+<li>如果你需要在某个数据变化时做一些事情，使用watch来观察这个数据变化</li>
+</ol>
+<h3 id="九-vue-cli"><a href="#九-vue-cli" class="headerlink" title="九. vue-cli"></a>九. vue-cli</h3><p><code>npm install vue-cli</code> 脚手架<br>各文件作用</p>
+<ol>
+<li>node_modules：存放 npm install 命令下载的开发环境和生产环境的各种依赖。</li>
+<li>src文件夹 ：工程项目的源码以及资源、包括页面图片、路由组件、路由配置、vuex、入口文件等。</li>
+<li>dist: <code>npm run build</code> 生成的文件，里面内容没有格式化。<br>Vue 打包后会在当前工作目录下生成一个 dist 文件夹，文件夹中会有 static 静态文件以及 index.html 初始页面。</li>
+<li>其他文件：定义的一些项目信息，说明等等。</li>
+</ol>
+<h3 id="九-axios"><a href="#九-axios" class="headerlink" title="九. axios"></a>九. axios</h3><p>axios 是一个基于 promise 的 HTTP 库，可以发送 get，post 请求，正是由于 Vue、React 的出现，促使了 axios 轻量级库的出现</p>
 
 
                 <hr>
