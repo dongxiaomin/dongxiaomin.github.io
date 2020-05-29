@@ -382,6 +382,46 @@
 <p>forEach： 不会返回执行结果，是 undefined，会改变原来数组。<br>Map: 会返回一个新的数组。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>];</span><br><span class="line"><span class="keyword">var</span> a = arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;　</span><br><span class="line">    <span class="keyword">return</span> <span class="number">123</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> b = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">123</span></span><br><span class="line">&#125;);　</span><br><span class="line"><span class="built_in">console</span>.log(a);    <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b);    <span class="comment">//[123,123,123,123]</span></span><br></pre></td></tr></table></figure>
 
+<p>————————————————- 20200529 更新 ————————————————-</p>
+<h3 id="十二-判断对象是否为空"><a href="#十二-判断对象是否为空" class="headerlink" title="十二. 判断对象是否为空"></a>十二. 判断对象是否为空</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="built_in">JSON</span>.stringify(a) == <span class="string">"&#123;&#125;"</span> <span class="comment">//false:不为空 true:为空 </span></span><br><span class="line"><span class="built_in">Object</span>.keys(a).length <span class="comment">//!=0:不为空 ==0:为空</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="十三-浏览器内核"><a href="#十三-浏览器内核" class="headerlink" title="十三. 浏览器内核"></a>十三. 浏览器内核</h3><p>主流浏览器有五大款，分别是IE、Firefox、Google Chrome、 Safari 、Opera。</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>浏览器</th>
+<th>内核</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>IE</td>
+<td>Trident内核，也是俗称的IE内核；</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Firefox</td>
+<td>Gecko内核，俗称Firefox内核；</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chrome</td>
+<td>统称为Chromium内核或Chrome内核，以前是Webkit内核，现在是Blink内核；</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Safari</td>
+<td>Webkit内核。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Opera</td>
+<td>最初是自己的Presto内核，后来是Webkit，现在是Blink内核。</td>
+</tr>
+</tbody></table>
+
+
                 <hr>
 
                 
