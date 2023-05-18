@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DXM的个人博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Vue 总结 - DXM的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2018/12/25/Vue/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">∞∞</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Vue 总结</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        <!-- Posted by DXM on -->
+                        2018-12-25
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><a href="https://es6.ruanyifeng.com/" target="_blank" rel="noopener">ES6 官方文档</a></p>
+<h3 id="一-什么是-MVVM？"><a href="#一-什么是-MVVM？" class="headerlink" title="一. 什么是 MVVM？"></a>一. 什么是 MVVM？</h3><p>MVC control<br>MVVM 是 Model-View-ViewModel 的缩写，MVVM 是一种设计思想。Model 层代表数据模式，也可以在 Model 中定义数据修改和操作的业务逻辑；View 代表 UI 组件，它负责将数据模型转化为 UI 展现出来，ViewModel 是一个同步 View 和 Model 的对象。</p>
+<p>Vue 是数据驱动，通过数据来显示视图层而不是节点操作。<br>处理数据交互的时候挺适合 MVVM 设计模式的。</p>
+<h3 id="二-Vue2-x响应式数据原理-双向数据绑定原理是什么"><a href="#二-Vue2-x响应式数据原理-双向数据绑定原理是什么" class="headerlink" title="二. Vue2.x响应式数据原理 (双向数据绑定原理是什么)"></a>二. Vue2.x响应式数据原理 (双向数据绑定原理是什么)</h3><p>Vue在初始化数据时，会使用Object.defineProperty重新定义data中的所有属性，当页面使用对应属性时，首先会进行依赖收集(收集当前组件的watcher)如果属性发生变化会通知相关依赖进行更新操作(发布订阅)。</p>
+<p>vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</p>
+<p>Proxy可以直接监听对象而非属性<br>Proxy可以直接监听数组的变化<br>Proxy返回的是一个新对象,我们可以只操作新的对象达到目的,而Object.defineProperty只能遍历对象属性直接修改</p>
+<h3 id="三-vue生命周期的理解"><a href="#三-vue生命周期的理解" class="headerlink" title="三. vue生命周期的理解"></a>三. vue生命周期的理解</h3><p>Vue 实例从创建到销毁的过程，就是生命周期。也就是从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、卸载等一系列过程，我们称这是 Vue 的生命周期。</p>
+<p>vue生命周期总共分为8个阶段: 创建前/后，载入前/后，更新前/后， 销毁前/后。</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beforeCreate</td>
+<td>组件实例被创建之初，组件的属性生效之前</td>
+</tr>
+<tr>
+<td>created</td>
+<td>组件实例已经完全创建，属性也绑定，但真实dom还没有生成，$el还不可用</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>在挂载开始之前被调用：相关的 render 函数首次被调用</td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用</td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>组件数据更新之前调用，发生在虚拟 DOM 打补丁之前</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>组件数据更新之后</td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>组件销毁前调用</td>
+</tr>
+<tr>
+<td>destoryed</td>
+<td>组件销毁后调用</td>
+</tr>
+</tbody></table>
+<p>异步请求适合在哪个生命周期调用？<br><strong>是在mounted生命周期中调用的，而实际上也可以在created生命周期中调用。</strong></p>
+<h3 id="四-父组件向子组件传值的方法？"><a href="#四-父组件向子组件传值的方法？" class="headerlink" title="四. 父组件向子组件传值的方法？"></a>四. 父组件向子组件传值的方法？</h3><p>使用props，父组件可以使用props向子组件传递数据。</p>
+<h3 id="五-子组件向父组件传值的方法？"><a href="#五-子组件向父组件传值的方法？" class="headerlink" title="五. 子组件向父组件传值的方法？"></a>五. 子组件向父组件传值的方法？</h3><p>父组件向子组件传递事件方法，子组件通过$emit触发事件，回调给父组件。</p>
+<h3 id="六-常用的指令有哪些"><a href="#六-常用的指令有哪些" class="headerlink" title="六. 常用的指令有哪些"></a>六. 常用的指令有哪些</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">if</span>=<span class="string">"seen"</span> <span class="comment">//判断是否隐藏</span></span><br><span class="line">v-<span class="keyword">for</span>=<span class="string">"todo in todos"</span> <span class="comment">//数据循环出来</span></span><br><span class="line">v-on:click=<span class="string">"reverseMessage"</span></span><br><span class="line">v-model=<span class="string">"message"</span> <span class="comment">//实现双向绑定, 一般用在表达输入，很轻松的实现表单控件和数据的双向绑定</span></span><br><span class="line">v-bind:<span class="class"><span class="keyword">class</span> //绑定一个属性</span></span><br><span class="line">v-html: //更新元素的 innerHTML</span><br></pre></td></tr></table></figure>
+<p>v-show 与 v-if: 条件渲染, 注意二者区别</p>
+<p>v-show小结：<br>1、v-show仅仅控制元素的显示方式，通过display属性的none<br>2、当我们需要经常切换某个元素的显示/隐藏时，使用v-show会更加节省性能上的开销</p>
+<p>v-if小结：<br>1、v-if会控制这个DOM节点的存在与否。<br>2、如果在运行时条件很少改变，则使用 v-if 较好。</p>
+<h3 id="七-Vue的路由实现-（vue-router-路由模式有几种）"><a href="#七-Vue的路由实现-（vue-router-路由模式有几种）" class="headerlink" title="七. Vue的路由实现 （vue-router 路由模式有几种）"></a>七. Vue的路由实现 （vue-router 路由模式有几种）</h3><p>vue-router 是 Vue.js 官方的路由管理器，它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。包含的功能有：</p>
+<p>在 router 目录下的 index.js 文件中，对 path 属性加上 /:id。使用 router 对象的 params.id，例如：this.$route.params.id。</p>
+<ol>
+<li>hash: 使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；<br>hash 模式的实现原理<br>location.hash的值实际就是URL中#后面的东西。</li>
+</ol>
+<p>特性：<br>URL 中 hash 值只是客户端的一种状态，也就是说当向服务器端发出请求时，hash 部分不会被发送；<br>hash 值的改变，都会在浏览器的访问历史中增加一个记录。因此我们能通过浏览器的回退、前进按钮控制hash 的切换；<br>可以通过 a 标签，并设置 href 属性，当用户点击这个标签后，URL 的 hash 值会发生改变；或者使用  JavaScript 来对 loaction.hash 进行赋值，改变 URL 的 hash 值；</p>
+<p>我们可以使用 hashchange 事件来监听 hash 值的变化，从而对页面进行跳转（渲染）。</p>
+<ol start="2">
+<li>history : 依赖 HTML5 History API 和服务器配置。具体可以查看 HTML5 History 模式；<br>history实际采用了HTML5中提供的API来实现，主要有history.pushState()和history.replaceState()。<br>这两个 API 可以在不进行刷新的情况下，操作浏览器的历史纪录。唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录，如下所示：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, path);</span><br><span class="line"><span class="built_in">window</span>.history.replaceState(<span class="literal">null</span>, <span class="literal">null</span>, path);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>abstract : 支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式.</p>
+<h3 id="六-vuex是什么"><a href="#六-vuex是什么" class="headerlink" title="六. vuex是什么"></a>六. vuex是什么</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。“store” 基本上就是一个容器，它包含着你的应用中大部分的状态 ( state )。</p>
+<p>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</p>
+<p>vuex 就是一个仓库，仓库里放了很多对象。其中 state 就是数据源存放地，对应于一般 vue 对象里面的 data<br>state 里面存放的数据是响应式的，vue 组件从 store 读取数据，若是 store 中的数据发生改变，依赖这相数据的组件也会发生更新<br>它通过 mapState 把全局的 state 和 getters 映射到当前组件的 computed 计算属性</p>
+<h3 id="七-Vuex-有哪几种属性？"><a href="#七-Vuex-有哪几种属性？" class="headerlink" title="七. Vuex 有哪几种属性？"></a>七. Vuex 有哪几种属性？</h3><p>主要包括以下几个模块：<br>State：定义了应用状态的数据结构，可以在这里设置默认的初始状态。<br>Getter：允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。<br>Mutation：是唯一更改 store 中状态的方法，且必须是同步函数。<br>Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。<br>Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。</p>
+<p>state：基本数据<br>getters：从基本数据派生的数据<br>mutations：提交更改数据的方法，同步！<br>actions：像一个装饰器，包裹 mutations，使之可以异步。<br>modules：模块化 Vuex。</p>
+<h3 id="八-computed和watch有什么区别"><a href="#八-computed和watch有什么区别" class="headerlink" title="八. computed和watch有什么区别?"></a>八. computed和watch有什么区别?</h3><p>computed:</p>
+<ol>
+<li>computed是计算属性,也就是计算值,它更多用于计算值的场景</li>
+<li>computed具有缓存性,computed的值在getter执行后是会缓存的，只有在它依赖的属性值改变之后，下一次获取computed的值时才会重新调用对应的getter来计算</li>
+<li>computed适用于计算比较消耗性能的计算场景</li>
+</ol>
+<p>watch:</p>
+<ol>
+<li>更多的是「观察」的作用,类似于某些数据的监听回调,用于观察props $emit或者本组件的值,当数据变化时来执行回调进行后续操作</li>
+<li>无缓存性，页面重新渲染时值不变化也会执行</li>
+</ol>
+<p>总结：</p>
+<ol>
+<li>当我们要进行数值计算,而且依赖于其他数据，那么把这个数据设计为computed</li>
+<li>如果你需要在某个数据变化时做一些事情，使用watch来观察这个数据变化</li>
+</ol>
+<h3 id="九-vue-cli"><a href="#九-vue-cli" class="headerlink" title="九. vue-cli"></a>九. vue-cli</h3><p><code>npm install vue-cli</code> 脚手架<br>各文件作用</p>
+<ol>
+<li>node_modules：存放 npm install 命令下载的开发环境和生产环境的各种依赖。</li>
+<li>src文件夹 ：工程项目的源码以及资源、包括页面图片、路由组件、路由配置、vuex、入口文件等。</li>
+<li>dist: <code>npm run build</code> 生成的文件，里面内容没有格式化。<br>Vue 打包后会在当前工作目录下生成一个 dist 文件夹，文件夹中会有 static 静态文件以及 index.html 初始页面。</li>
+<li>其他文件：定义的一些项目信息，说明等等。</li>
+</ol>
+<h3 id="九-axios"><a href="#九-axios" class="headerlink" title="九. axios"></a>九. axios</h3><p>axios 是一个基于 promise 的 HTTP 库，可以发送 get，post 请求，正是由于 Vue、React 的出现，促使了 axios 轻量级库的出现</p>
+<h3 id="十-Vue与React的区别"><a href="#十-Vue与React的区别" class="headerlink" title="十. Vue与React的区别"></a>十. Vue与React的区别</h3><p>vue组件分为全局注册和局部注册，在react中都是通过import相应组件，然后模版中引用；</p>
+<p>props是可以动态变化的，子组件也实时更新，在react中官方建议props要像纯函数那样，输入输出一致对应，而且不太建议通过props来更改视图；</p>
+<p>子组件一般要显示地调用props选项来声明它期待获得的数据。而在react中不必需，另两者都有props校验机制；</p>
+<p>Vue增加的语法糖 computed 和 watch ，而在React中需要自己写一套逻辑来实现；</p>
+<h3 id="十一-Vue的性能优化"><a href="#十一-Vue的性能优化" class="headerlink" title="十一. Vue的性能优化"></a>十一. Vue的性能优化</h3><p>尽量减少data中的数据，data中的数据都会增加getter和setter，会收集对应的watcher<br>v-if和v-for不能连用<br>SPA 页面采用keep-alive缓存组件<br>在更多的情况下，使用v-if替代v-show<br>key保证唯一<br>使用路由懒加载、异步组件防抖、节流<br>第三方模块按需导入<br>长列表滚动到可视区域动态加载<br>图片懒加载</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/03/10/Flex/" data-toggle="tooltip" data-placement="top" title="Flex 布局">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/09/29/IOS/" data-toggle="tooltip" data-placement="top" title="IOS 资料">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    <!-- Copyright &copy; ∞∞ 2023  -->
+                    Copyright &copy; ∞∞ 2016
+                    <br>
+                    <a href="https://github.com/dongxiaomin" target="_blank" rel="noopener">https://github.com/dongxiaomin</a> 
+                    <!-- Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe> -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

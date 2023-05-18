@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DXM的个人博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Jquery - DXM的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/04/10/Jquery/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">∞∞</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Jquery</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        <!-- Posted by DXM on -->
+                        2016-04-10
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="一-概述"><a href="#一-概述" class="headerlink" title="一. 概述"></a>一. 概述</h3><p>jQuery 是一个高效、精简并且功能丰富的 JavaScript 工具库。它提供的 API 易于使用且兼容众多浏览器，这让诸如 HTML 文档遍历和操作、事件处理、动画和 Ajax操作更加简单。</p>
+<ul>
+<li>全面解决pc端的兼容性问题。</li>
+<li>语法精炼，性能好。插件库非常庞大。</li>
+</ul>
+<h3 id="二-下载-jQuery"><a href="#二-下载-jQuery" class="headerlink" title="二. 下载 jQuery"></a>二. 下载 jQuery</h3><ol>
+<li>打开<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">cdn链接</a></li>
+<li>搜索 jquery</li>
+<li>复制 <code>&lt;script&gt;</code> 标签<blockquote>
+<p><code>&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js&quot;&gt;&lt;/script&gt;</code></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="三-jQuery库包含以下功能："><a href="#三-jQuery库包含以下功能：" class="headerlink" title="三. jQuery库包含以下功能："></a>三. jQuery库包含以下功能：</h3><ol>
+<li>HTML 元素选取</li>
+<li>HTML 元素操作</li>
+<li>CSS 操作</li>
+<li>HTML 事件函数</li>
+<li>JavaScript 特效和动画</li>
+<li>HTML DOM 遍历和修改</li>
+<li>AJAX<br>提示： 除此之外，Jquery还提供了大量的插件。</li>
+</ol>
+<p>详情请<a href="https://www.html.cn/jqapi-1.9/" target="_blank" rel="noopener">参考文档1</a><br>[参考文档2]<a href="https://www.runoob.com/jquery/jquery-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/jquery/jquery-tutorial.html</a></p>
+<h4 id="（一）-选择器"><a href="#（一）-选择器" class="headerlink" title="（一）. 选择器"></a>（一）. 选择器</h4><pre><code>:even() 下标偶数
+:odd()  下标奇数
+
+prev + next 相邻一个选择器
+prev ~ next 相邻所有选择器
+
+gt(0) 大于下标 0，不包括 0
+lt(1) 小于下标 1</code></pre><h4 id="（二）-属性"><a href="#（二）-属性" class="headerlink" title="（二）. 属性"></a>（二）. 属性</h4><pre><code>attr 自定义属性
+prop 固有属性，例： $(&quot;input&quot;).prop(&quot;checked&quot;)</code></pre><h4 id="（三）-HTML-元素操作"><a href="#（三）-HTML-元素操作" class="headerlink" title="（三）. HTML 元素操作"></a>（三）. HTML 元素操作</h4><pre><code>添加元素</code></pre><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>注意点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>append</td>
+<td>被选元素结尾</td>
+<td>选择元素内部插入</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td>被选元素开头</td>
+<td>选择元素内部插入</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>appendTo(‘p’)</td>
+<td>把… 添加到p 元素里面</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>after</td>
+<td>被选元素之后</td>
+<td>选择元素外面追加</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td>被选元素之前</td>
+<td>选择元素外面追加</td>
+</tr>
+</tbody></table>
+<hr>
+<pre><code>删除元素
+empty() 清空被选元素中子元素
+remove() 删除被选元素</code></pre><h4 id="（四）-HTML-DOM-遍历"><a href="#（四）-HTML-DOM-遍历" class="headerlink" title="（四）. HTML DOM 遍历"></a>（四）. HTML DOM 遍历</h4><table>
+<thead>
+<tr>
+<th>父元素</th>
+<th>子元素</th>
+<th>兄弟元素/同级元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>parent()</td>
+<td>children()</td>
+<td>next()/ nextAll()/ nextUntil()</td>
+</tr>
+<tr>
+<td>parents()</td>
+<td>find()</td>
+<td>prev()/ prevAll()/ prevUntil</td>
+</tr>
+<tr>
+<td>parentsUntil()</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="四-详细描述-amp-面试题"><a href="#四-详细描述-amp-面试题" class="headerlink" title="四. 详细描述 &amp; 面试题"></a>四. 详细描述 &amp; 面试题</h3><h4 id="（一）-jQuery四种事件绑定方式-on-bind-live-delegate-的区别"><a href="#（一）-jQuery四种事件绑定方式-on-bind-live-delegate-的区别" class="headerlink" title="（一）. jQuery四种事件绑定方式: .on() .bind() .live() .delegate() 的区别"></a>（一）. jQuery四种事件绑定方式: .on() .bind() .live() .delegate() 的区别</h4><h5 id="1-on"><a href="#1-on" class="headerlink" title="1. on"></a>1. on</h5><p><code>$(&quot;ul&quot;).on(&quot;click&quot;,&quot;li&quot;,function () { alert(1); })</code></p>
+<pre><code>(1) 提供了一种统一绑定事件的方法
+(2) 仍然提供了.delegate()的优点，当然如果需要你也可以直接用.bind()    </code></pre><h5 id="2-bind"><a href="#2-bind" class="headerlink" title="2. bind"></a>2. bind</h5><p><code>$( &quot;a&quot; ).bind( &quot;click&quot;, function( e ) { alert(1);} )</code></p>
+<pre><code>(1) 这是最直接的绑定方法。jQuery 扫描文档找到所有 $(‘a’) 元素，然后给每一个找到的元素的 click 事件绑定处理函数。
+(2) 当元素很多时，会出现效率问题; 当页面加载完的时候，你才可以进行bind()，所以可能产生效率问题  </code></pre><h5 id="3-live"><a href="#3-live" class="headerlink" title="3. live"></a>3. live</h5><p><code>$(&#39;a&#39;).live(&#39;click&#39;,function() { alert(1); })</code></p>
+<pre><code>(1) JQuery把alert函数绑定到$(document)元素上，并使用’click’和’a’作为参数。任何时候只要有事件冒泡到document节点上，它就查看该事件是否是一个click事件，以及该事件的目标元素与’a’这一CSS选择器是否匹配，如果都是的话，则执行函数。    
+(2) live方法有一个最大的缺点，只能用css选择器，用起来很不方便。    
+(3) 从1.7开始已经不被推荐了，所以你也要开始逐步淘汰它了。 </code></pre><h5 id="4-delegate"><a href="#4-delegate" class="headerlink" title="4. delegate"></a>4. delegate</h5><p><code>$(&quot;ul&quot;).delegate(&quot;li&quot;,&quot;click&quot;,function(){ alert(1); })</code></p>
+<pre><code>向未来的元素添加事件处理程序    </code></pre><h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><pre><code>(1) 我们可以用.on()来代替上述的3种方法    
+(2) 用.bind()的代价是非常大的，它会把相同的一个事件处理程序hook到所有匹配的DOM元素上    
+(3) 不要再用.live()了，它已经不再被推荐了，而且还有许多问题    
+(4) .delegate()会提供很好的方法来提高效率，同时我们可以添加一事件处理方法到动态添加的元素上    </code></pre><h4 id="（二）-关于事件冒泡、事件捕获和事件委托"><a href="#（二）-关于事件冒泡、事件捕获和事件委托" class="headerlink" title="（二）. 关于事件冒泡、事件捕获和事件委托"></a>（二）. 关于事件冒泡、事件捕获和事件委托</h4><h5 id="1-事件冒泡"><a href="#1-事件冒泡" class="headerlink" title="1. 事件冒泡"></a>1. 事件冒泡</h5><p>(1) 会从当前触发的事件目标一级一级往上传递，依次触发，直到document为止。     </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box3&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&#x2F;&#x2F;点击 #box3, 触发顺序是 box3&gt;box2&gt;box1，这种现象就是事件冒泡。</span><br></pre></td></tr></table></figure>
+
+<p>(2) 阻止冒泡：<br><code>e.stopPropagation()</code> //方法一<br><code>return false;</code> //方法二</p>
+<h5 id="2-事件捕获"><a href="#2-事件捕获" class="headerlink" title="2. 事件捕获"></a>2. 事件捕获</h5><p>会从document开始触发，一级一级往下传递，依次触发，直到真正事件目标为止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box3&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&#x2F;&#x2F;点击 #box3, 触发顺序是 box1&gt;box2&gt;box3，这种现象就是事件捕获。</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-事件委托"><a href="#3-事件委托" class="headerlink" title="3. 事件委托"></a>3. 事件委托</h5><p>(1) 又称事件代理，通过监听一个父元素，来给不同的子元素绑定事件，减少监听次数，从而提升速度。<br>(2) 换种说法：委托它们父级代为执行事件。我们只用给父元素添加监听器，而不用再一步步的去遍历子元素，在子元素上添加事件监听。<br>(3) 事件委托首先可以极大减少事件绑定次数，提高性能；其次可以让新加入的子元素也可以拥有相同的操作。<br>(4) 事件委托就是利用事件冒泡原理实现的。<br>(5) 自动绑定动态添加的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id&#x3D;&quot;list&quot;&gt;</span><br><span class="line">    &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;4&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;5&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;方法一：</span><br><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;ul&quot;).on(&quot;click&quot;,&quot;li&quot;,function () &#123;</span><br><span class="line">        alert(1);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;方法二：</span><br><span class="line">$(function()&#123;</span><br><span class="line">    $(&quot;#list&quot;).delegate(&quot;li&quot;,&quot;click&quot;,function()&#123;</span><br><span class="line">        alert(1);</span><br><span class="line">    &#125;)</span><br><span class="line">    var $li &#x3D; $(&#39;&lt;li&gt;6&lt;&#x2F;li&gt;&#39;);</span><br><span class="line">    $(&quot;#list&quot;).append($li);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code>备注：
+在jQuery1.7中 .delegate()已被.on()取代。
+两者区别是seleter和events顺序不同。
+delegate和on方法被选元素的子元素必须是&quot;合法的&quot;子元素。</code></pre><h4 id="（三）-jQuery-点击事件-click-和onclick-区别"><a href="#（三）-jQuery-点击事件-click-和onclick-区别" class="headerlink" title="（三）. jQuery 点击事件 click() 和onclick() 区别"></a>（三）. jQuery 点击事件 click() 和onclick() 区别</h4><pre><code>click是触发事件 (模拟鼠标点击操作)
+onclick是绑定事件 (告诉浏览器在鼠标点击的时候要做什么)</code></pre><ul>
+<li><p>click()是用程序去点击按钮</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#testclick&quot;).click(function()&#123;</span><br><span class="line">    console.log(&quot;click&quot;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>onclick(）只是触发click事件去调用内部方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;button&quot; onclick&#x3D;&quot;test();&quot; class&#x3D;&quot;input1&quot; id&#x3D;&quot;testclick&quot; value&#x3D;&quot;test_button&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">function test()&#123; </span><br><span class="line">    console.log(&quot;function test()&quot;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="（四）-Ajax"><a href="#（四）-Ajax" class="headerlink" title="（四）. Ajax"></a>（四）. Ajax</h4><h5 id="1-什么是-AJAX？"><a href="#1-什么是-AJAX？" class="headerlink" title="1. 什么是 AJAX？"></a>1. 什么是 AJAX？</h5><pre><code>AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
+AJAX 是一种与服务器交换数据的技术，可以在不重新载入整个页面的情况下更新网页的一部分。</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">"post"</span>, <span class="comment">//数据提交类型</span></span><br><span class="line">    dataType: <span class="string">"json"</span>, <span class="comment">//返回的数据类型</span></span><br><span class="line">    url: <span class="string">"https://www.baidu.com:80"</span>, <span class="comment">//请求地址 : 协议+域名+端口</span></span><br><span class="line">    <span class="keyword">async</span>: <span class="literal">true</span>, <span class="comment">//同步或者异步 ,ajax 就是为了异步而生</span></span><br><span class="line">    data: &#123;<span class="string">"type"</span>: <span class="string">"2"</span>&#125;, <span class="comment">// 发数的参数/数据</span></span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (result.code === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(reslt);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    error: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">        <span class="built_in">console</span>.log(result.message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="（五）-跨域解决方法，下面讲述四种"><a href="#（五）-跨域解决方法，下面讲述四种" class="headerlink" title="（五）. 跨域解决方法，下面讲述四种"></a>（五）. 跨域解决方法，下面讲述四种</h4><h5 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h5><pre><code>跨域，是指浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript实施的安全限制。
+同源是指，域名、协议、端口均为相同。</code></pre><p> <a href="https://juejin.im/post/5e882ca8f265da47cb3109e1#heading-19" target="_blank" rel="noopener">参考链接</a></p>
+<h5 id="1-jsonp"><a href="#1-jsonp" class="headerlink" title="1. jsonp"></a>1. jsonp</h5><ul>
+<li>JSONP 只能解决GET跨域</li>
+<li>原理：动态创建一个script标签。利用script标签的src属性不受同源策略限制。因为所有的src属性和href属性都不受同源策略限制。可以请求第三方服务器数据内容。</li>
+<li>步骤：<br>(1). 创建一个script标签<br>(2). script的src属性设置接口地址<br>(3). 接口参数,必须要带一个自定义函数名 要不然后台无法返回数据。<br>(4). 通过定义函数名去接收后台返回数据</li>
+<li>方法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);<span class="comment">//去创建一个script标签</span></span><br><span class="line"><span class="comment">//script的src属性设置接口地址 并带一个callback回调函数名称</span></span><br><span class="line">script.src = <span class="string">"http://www.test.cn/login?username=test&amp;callback=callback"</span>;</span><br><span class="line"><span class="built_in">document</span>.head.appendChild(script);<span class="comment">//插入到页面</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonpCallback</span>(<span class="params">data</span>)</span>&#123;<span class="comment">//通过定义函数名去接收后台返回数据</span></span><br><span class="line">    <span class="comment">//注意：jsonp返回的数据是json对象可以直接使用</span></span><br><span class="line">    <span class="comment">//ajax 取得数据是json字符串需要转换成json对象才可以使用。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="2-CORS"><a href="#2-CORS" class="headerlink" title="2. CORS"></a>2. CORS</h5><ul>
+<li>CORS：跨域资源共享</li>
+<li>原理：服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求</li>
+<li>限制：浏览器需要支持HTML5，可以支持POST，PUT等方法兼容ie9以上 需要后台设置</li>
+<li>方法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: *              <span class="comment">//允许所有域名访问，或者</span></span><br><span class="line">Access-Control-Allow-Origin: http:<span class="comment">//a.com   //只允许所有域名访问</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="3-postMessage-跨域"><a href="#3-postMessage-跨域" class="headerlink" title="3. postMessage 跨域"></a>3. postMessage 跨域</h5><ul>
+<li><p>页面跟嵌套在iframe中的页面通信</p>
+</li>
+<li><p>方法：<br>有a,b 两个页面，在b页面中引用a页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">'http://localhost:3000/a.html'</span> <span class="attr">id</span>=<span class="string">'aIframe'</span> <span class="attr">onload</span>=<span class="string">'load()'</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">  	<span class="function"><span class="keyword">function</span> <span class="title">load</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">  	    <span class="keyword">let</span> frame = <span class="built_in">document</span>.getElementById(<span class="string">'aIframe'</span>)</span></span><br><span class="line"><span class="actionscript">  	    <span class="comment">//给嵌套在iframe中的页面的window发送信息</span></span></span><br><span class="line"><span class="actionscript">  	    <span class="comment">//第二个参数是origin</span></span></span><br><span class="line"><span class="actionscript">  	    frame.contentWindow.postMessage(<span class="string">'你好我是b页面'</span>,<span class="string">'http://localhost:3000/a.html'</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="actionscript">    <span class="comment">//b页面监听来自a页面的信息</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onmessage=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(e.data)</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>  在a页面中监听b页面的信息</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onmessage=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.data)</span><br><span class="line">    <span class="comment">//收到信息后给b页面发送信息，</span></span><br><span class="line">    e.source.postMessage(<span class="string">'你好，我是a页面'</span>，e.origin)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>总结：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送信息</span></span><br><span class="line"><span class="built_in">window</span>.postMessage(<span class="string">'信息'</span>，orign)</span><br><span class="line"><span class="comment">//最主要是：frame.contentWindow.postMessage('你好我是b页面','http://localhost:4000/xxx')</span></span><br><span class="line"><span class="comment">//接收信息</span></span><br><span class="line"><span class="built_in">window</span>.onmessage=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="4-设置-document-domain"><a href="#4-设置-document-domain" class="headerlink" title="4. 设置 document.domain"></a>4. 设置 document.domain</h5><table>
+<thead>
+<tr>
+<th>二级域名/子域名</th>
+<th>一级域名/主域名</th>
+<th>整体</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aaa</td>
+<td>xxx.com</td>
+<td>aaa.xxx.com</td>
+</tr>
+<tr>
+<td>bbb</td>
+<td>xxx.com</td>
+<td>bbb.xxx.com</td>
+</tr>
+</tbody></table>
+<ul>
+<li>原理：相同主域名不同子域名下的页面，可以设置document.domain让它们同域</li>
+<li>限制：同域document提供的是页面间的互操作，需要载入iframe页面</li>
+<li>需求：aaa里的一个网页（a.html）引入了bbb 里的一个网页（b.html），这时a.html里同样是不能操作b.html里面的内容的。因为document.domain不一样，一个是aaa.xxx.com，另一个是bbb.xxx.com。</li>
+<li>方法：<br>这时我们就可以通过Javascript，将两个页面的domain改成一样的，<br>需要在a.html里与b.html里都加入：<code>document.domain = &quot;xxx.com&quot;;</code><br>这样这两个页面就可以互相操作了。也就是实现了同一基础域名之间的”跨域”。</li>
+</ul>
+<h4 id="六-更多面试资料请参考"><a href="#六-更多面试资料请参考" class="headerlink" title="(六). 更多面试资料请参考"></a>(六). <a href="https://juejin.im/post/5c87327bf265da2dd0527d05#heading-76" target="_blank" rel="noopener">更多面试资料请参考</a></h4>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/08/11/Zepto/" data-toggle="tooltip" data-placement="top" title="Zepto">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/03/06/Blog/" data-toggle="tooltip" data-placement="top" title="使用 hexo + github 快速搭建个人博客">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    <!-- Copyright &copy; ∞∞ 2023  -->
+                    Copyright &copy; ∞∞ 2016
+                    <br>
+                    <a href="https://github.com/dongxiaomin" target="_blank" rel="noopener">https://github.com/dongxiaomin</a> 
+                    <!-- Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe> -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

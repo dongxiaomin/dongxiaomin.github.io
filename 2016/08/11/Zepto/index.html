@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DXM的个人博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Zepto - DXM的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/08/11/Zepto/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">∞∞</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Zepto</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        <!-- Posted by DXM on -->
+                        2016-08-11
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><a href="https://www.html.cn/doc/zeptojs_api/" target="_blank" rel="noopener">Zepto 官方文档</a></p>
+<h3 id="一-概述"><a href="#一-概述" class="headerlink" title="一. 概述"></a>一. 概述</h3><p>Zepto是一个轻量级的针对现代高级浏览器的JavaScript库， 它与jquery有着类似的api。 如果你会用jquery，那么你也会用zepto。</p>
+<h3 id="二-下载-Zepto"><a href="#二-下载-Zepto" class="headerlink" title="二. 下载 Zepto"></a>二. 下载 Zepto</h3><ol>
+<li>打开<a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">cdn链接</a></li>
+<li>搜索 zepto</li>
+<li>复制 <code>&lt;script&gt;</code> 标签<blockquote>
+<p><code>&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/zepto/1.2.0/zepto.js&quot;&gt;&lt;/script&gt;</code> //开发版<br><code>&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/zepto/1.2.0/zepto.min.js&quot;&gt;&lt;/script&gt;</code> //生成版</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="三-Zepto-优点"><a href="#三-Zepto-优点" class="headerlink" title="三. Zepto 优点"></a>三. Zepto 优点</h3><ol>
+<li>Zepto 是为现代智能手机浏览器推出的Javascript框架，有着独特的手指的触摸事件（tap、swipe…），且不再支持IE浏览器。</li>
+<li>压缩后的 Zepto.min.js 大小只有21K， 使用服务器端压缩后大小只有5~10K，非常的小,功能很齐全,兼容现代高级浏览器。</li>
+<li>轻量，极大的减轻了整个app的负载。  </li>
+</ol>
+<h3 id="四-Zepto-和-Jquery-区别："><a href="#四-Zepto-和-Jquery-区别：" class="headerlink" title="四. Zepto 和 Jquery 区别："></a>四. Zepto 和 Jquery 区别：</h3><ol>
+<li>Zepto就是jQuery的移动端版本, 可以看做是一个轻量级的jQuery</li>
+<li>Zepto的设计目的是提供 jquery 的类似的API，但并不是100%覆盖 jquery</li>
+<li>Zepto.js语法和jquery起码百分之90相似，主要做移动端框架，和jquery mobile是一个类型的概念.<blockquote>
+<p>jQuery电脑专用 （但他又开发出了jquery-mobile,专门用于手机）。</p>
+</blockquote>
+</li>
+<li>Zepto.js 的底层是通过css3 来实现的，jQuery的底层是通过DOM来实现效果的</li>
+</ol>
+<h3 id="五-Zepto与jquery使用上的区别"><a href="#五-Zepto与jquery使用上的区别" class="headerlink" title="五.  Zepto与jquery使用上的区别"></a>五.  Zepto与jquery使用上的区别</h3><h4 id="（一）-Zepto-属性"><a href="#（一）-Zepto-属性" class="headerlink" title="（一）. Zepto 属性"></a>（一）. Zepto 属性</h4><pre><code>zepto在操作dom的selected和checked属性时尽量使用prop方法
+读取或设置DOM元素的属性值，它在读取属性值的情况下，优于attr.</code></pre><h4 id="（二）-Zepto移动端事件"><a href="#（二）-Zepto移动端事件" class="headerlink" title="（二）. Zepto移动端事件"></a>（二）. Zepto移动端事件</h4><ol>
+<li><p>swipe，</p>
+</li>
+<li><p>swipeLeft,</p>
+</li>
+<li><p>swipeRight,</p>
+</li>
+<li><p>swipeUp,</p>
+</li>
+<li><p>swipeDown,</p>
+</li>
+<li><p>tap, singeTap, doubleTap, longTap</p>
+<p> 例子</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#items li'</span>).swipe(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'.delete'</span>).hide()</span><br><span class="line">    $(<span class="string">'.delete'</span>, <span class="keyword">this</span>).show()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.delete'</span>).tap(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="keyword">this</span>).parent(<span class="string">'li'</span>).remove()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>注意： </p>
+<ol>
+<li>如果想在移动设备上使用swipe事件，先要清除系统默认的手势事件,清楚系统默认的事件 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">touch-action: none;//清除系统默认的手势事件</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>tap只作用在移动端，PC端是无效的<br> click在pc端和移动端都是ok的<br> 但是我们在移动端要用tap，因为 tap 比 click 快200-300ms。</li>
+</ol>
+<h4 id="（三）-触发事件的区别"><a href="#（三）-触发事件的区别" class="headerlink" title="（三）. 触发事件的区别"></a>（三）. 触发事件的区别</h4><p>使用jquery 时，load 事件的处理函数不会执行，使用zepto时 load事件的处理函数会执行</p>
+<p>jquery 代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123; </span><br><span class="line">  $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;     </span><br><span class="line">    $script = $(<span class="string">'&lt;script /&gt;'</span>, &#123; </span><br><span class="line">      src: <span class="string">'http://cdn.xxx'</span>, </span><br><span class="line">      id: <span class="string">'ui-jquery'</span> </span><br><span class="line">    &#125;); </span><br><span class="line">   </span><br><span class="line">    $script.appendTo($(<span class="string">'body'</span>)); </span><br><span class="line">   </span><br><span class="line">    $script.on(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'jQ script loaded'</span>); </span><br><span class="line">    &#125;); </span><br><span class="line">  &#125;); </span><br><span class="line">&#125;)(<span class="built_in">window</span>.jQuery);</span><br></pre></td></tr></table></figure>
+
+<p>Zepto 代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Zepto(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;   </span><br><span class="line">  $script = $(<span class="string">'&lt;script /&gt;'</span>, &#123; </span><br><span class="line">    src: <span class="string">'http://cdn.xxx'</span>, </span><br><span class="line">    id: <span class="string">'ui-zepto'</span> </span><br><span class="line">  &#125;); </span><br><span class="line">   </span><br><span class="line">  $script.appendTo($(<span class="string">'body'</span>)); </span><br><span class="line">   </span><br><span class="line">  $script.on(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'zepto script loaded'</span>); </span><br><span class="line">  &#125;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="（四）-DOM-操作区别"><a href="#（四）-DOM-操作区别" class="headerlink" title="（四）. DOM 操作区别"></a>（四）. DOM 操作区别</h4><p>添加id时，jquery 不会生效 而Zepto会生效</p>
+<p>jquery 代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123; </span><br><span class="line">  $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> $list = $(<span class="string">'&lt;ul&gt;&lt;li&gt;jQuery 插入&lt;/li&gt;&lt;/ul&gt;'</span>, &#123; </span><br><span class="line">      id: <span class="string">'insert-by-jquery'</span> </span><br><span class="line">    &#125;); </span><br><span class="line">    $list.appendTo($(<span class="string">'body'</span>)); </span><br><span class="line">  &#125;); </span><br><span class="line">&#125;)(<span class="built_in">window</span>.jQuery);</span><br></pre></td></tr></table></figure>
+
+<p>Zepto 代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Zepto(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;   </span><br><span class="line">  <span class="keyword">var</span> $list = $(<span class="string">'&lt;ul&gt;&lt;li&gt;Zepto 插入&lt;/li&gt;&lt;/ul&gt;'</span>, &#123; </span><br><span class="line">    id: <span class="string">'insert-by-zepto'</span> </span><br><span class="line">  &#125;); </span><br><span class="line">  $list.appendTo($(<span class="string">'body'</span>)); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>更多内容请参考<a href="https://blog.csdn.net/kongjiea/article/details/42522305" target="_blank" rel="noopener">链接</a></p>
+<h3 id="六-Zepto和jquery可以同时使用吗"><a href="#六-Zepto和jquery可以同时使用吗" class="headerlink" title="六. Zepto和jquery可以同时使用吗 ?"></a>六. Zepto和jquery可以同时使用吗 ?</h3><p>一般情况下，我们在选择这类库的时候都 <strong>只用一个</strong>，要么jquery,要么Zepto<br>但是遇到某些特殊情况时，需要引入某个插件，可能会出现两个共用，这时需要对这两个库进行一些处理。</p>
+<ul>
+<li><p>方法一：<br>声明下 var jq=$.noConflict();<br>这样就可以用jq代替jquery的$</p>
+</li>
+<li><p>方法二：<br>window.$$ = window.Zepto = Zepto;<br>这样就可以用$$替代zepto</p>
+</li>
+</ul>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/11/20/Swiper/" data-toggle="tooltip" data-placement="top" title="Swiper">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/04/10/Jquery/" data-toggle="tooltip" data-placement="top" title="Jquery">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    <!-- Copyright &copy; ∞∞ 2023  -->
+                    Copyright &copy; ∞∞ 2016
+                    <br>
+                    <a href="https://github.com/dongxiaomin" target="_blank" rel="noopener">https://github.com/dongxiaomin</a> 
+                    <!-- Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe> -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

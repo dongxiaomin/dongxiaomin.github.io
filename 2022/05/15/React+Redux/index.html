@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DXM的个人博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          React Redux - DXM的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2022/05/15/React+Redux/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">∞∞</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>React Redux</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        <!-- Posted by DXM on -->
+                        2022-05-15
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><a href="https://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts" target="_blank" rel="noopener">https://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts</a></p>
+<p>Redux 是一个使用叫做 “action” 的事件来管理和更新应用状态的模式和工具库 它以集中式 Store（centralized store）的方式对整个应用中使用的状态进行集中管理，其规则确保状态只能以可预测的方式更新。</p>
+<ol>
+<li><p>Redux 是一个管理全局应用状态的库<br> Redux 通常与 React-Redux 库一起使用，把 Redux 和 React 集成在一起<br> Redux Toolkit 是编写 Redux 逻辑的推荐方式</p>
+</li>
+<li><p>Redux 使用 “单向数据流”<br> (1)State 描述了应用程序在某个时间点的状态，视图基于该 state 渲染<br> (2)当应用程序中发生某些事情时：</p>
+<pre><code>视图 dispatch 一个 action
+store 调用 reducer，随后根据发生的事情来更新 state
+store 将 state 发生了变化的情况通知 UI</code></pre><p> (3)视图基于新 state 重新渲染</p>
+</li>
+<li><p>Redux 有这几种类型的代码<br> Action 是有 type 字段的纯对象，描述发生了什么<br> Reducer 是纯函数，基于先前的 state 和 action 来计算新的 state<br> 每当 dispatch 一个 action 后，store 就会调用 root reducer</p>
+</li>
+<li><p>Store<br>当前 Redux 应用的 state 存在于一个名为 store 的对象中。<br>store 是通过传入一个 reducer 来创建的，并且有一个名为 getState 的方法，它返回当前状态值：</p>
+</li>
+<li><p>Action<br>action 是一个具有 type 字段的普通 JavaScript 对象。你可以将 action 视为描述应用程序中发生了什么的事件.</p>
+</li>
+<li><p>Reducer<br>reducer 是一个函数，接收当前的 state 和一个 action 对象，必要时决定如何更新状态，并返回新状态。函数签名是：(state, action) =&gt; newState。 你可以将 reducer 视为一个事件监听器，它根据接收到的 action（事件）类型处理事件。</p>
+</li>
+</ol>
+<h2 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h2><p>升级到指定node版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo n v12.14.0 &#x2F;&#x2F;hexo提交</span><br><span class="line">sudo n v18.16.0 &#x2F;&#x2F;Redux 项目</span><br></pre></td></tr></table></figure>
+
+<h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><ol>
+<li>升级node版本后,npx create-react-app my-app –template redux-typescript 报错:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! code ERR_SOCKET_TIMEOUT</span><br><span class="line">npm ERR! network Socket timeout</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network </span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network <span class="string">'proxy'</span> config is <span class="keyword">set</span> properly.  See: 'npm help config'</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>解决方案：<br>①进行代理设置为false，如下命令 npm config set proxy false<br>②npm缓存清理，如下命令 npm cache verify<br>③再次执行npm install命令即可解决此问题</p>
+<ol start="2">
+<li><p>npm ERR! Error: socket hang up<br>解决方案：npm config set registry <a href="http://registry.npmjs.org/" target="_blank" rel="noopener">http://registry.npmjs.org/</a></p>
+</li>
+<li><p>安装Redux DevTools<br><a href="https://github.com/zalmoxisus/redux-devtools-extension" target="_blank" rel="noopener">https://github.com/zalmoxisus/redux-devtools-extension</a><br>①<a href="https://github.com/zalmoxisus/redux-devtools-extension/releases" target="_blank" rel="noopener">https://github.com/zalmoxisus/redux-devtools-extension/releases</a> v2.16.3 下载 extension.zip<br>②解压,把文件夹拖拽到chrome://extensions/</p>
+</li>
+<li><p>npm install 报错:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! code ERR_SOCKET_TIMEOUT</span><br><span class="line">npm ERR! network Socket timeout</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network </span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network <span class="string">'proxy'</span> config is <span class="keyword">set</span> properly.  See: 'npm help config'</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br></pre></td></tr></table></figure>
+<p>解决方案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config get proxy</span><br><span class="line">npm config rm proxy</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="UI-库"><a href="#UI-库" class="headerlink" title="UI 库"></a>UI 库</h2><p>Arco Design React<br>智能设计体系，连接轻盈体验，字节跳动出品的企业级设计系统<br>创作者: 字节跳动<br>文档地址: <a href="https://arco.design/react/docs/dark" target="_blank" rel="noopener">https://arco.design/react/docs/dark</a></p>
+<h2 id="React总结"><a href="#React总结" class="headerlink" title="React总结"></a>React总结</h2><ol>
+<li>生命周期:<br>挂载时 更新时 卸载时<br>componentDidMount<br>componentDidUpdate<br>componentWillUnmount<br><img src="../../../../img/lifeCycle.png" alt="生命周期"></li>
+</ol>
+<p>ref: <a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</a></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2021/02/10/Webpack/" data-toggle="tooltip" data-placement="top" title="Webpack">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    <!-- Copyright &copy; ∞∞ 2023  -->
+                    Copyright &copy; ∞∞ 2016
+                    <br>
+                    <a href="https://github.com/dongxiaomin" target="_blank" rel="noopener">https://github.com/dongxiaomin</a> 
+                    <!-- Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe> -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

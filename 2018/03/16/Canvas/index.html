@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DXM的个人博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Canvas - DXM的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2018/03/16/Canvas/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">∞∞</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Canvas</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        <!-- Posted by DXM on -->
+                        2018-03-16
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API" target="_blank" rel="noopener">Canvas 官方文档</a></p>
+<h3 id="一-概述"><a href="#一-概述" class="headerlink" title="一. 概述"></a>一. 概述</h3><p>HTML5 <code>&lt;canvas&gt;</code> 标签用于绘制图像（通过脚本，通常是 JavaScript）。<br>不过，<code>&lt;canvas&gt;</code> 元素本身并没有绘制能力（它仅仅是图形的容器） - 您必须使用脚本来完成实际的绘图任务。</p>
+<h3 id="二-Sass-使用方法："><a href="#二-Sass-使用方法：" class="headerlink" title="二. Sass 使用方法："></a>二. Sass 使用方法：</h3><p>画布的编程模式 先清除，再重绘.<br>画布的特点是绘制的元素无法更改.</p>
+<ol>
+<li><p>矩形</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillRect(x,y,width,height) <span class="comment">//填充矩形</span></span><br><span class="line">ctx.strokeRect(x,y,width,height) <span class="comment">//框线矩形</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>圆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sAngle: 起始角，以弧度计。（弧的圆形的三点钟位置是 0 度</span></span><br><span class="line"><span class="comment">//eAngle: 结束角，以弧度计。</span></span><br><span class="line"><span class="comment">//counterclockwise: 可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。</span></span><br><span class="line">context.arc(x,y,r,sAngle,eAngle,counterclockwise);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弧/曲线</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.arcTo(x1,y1,x2,y2,r) <span class="comment">//创建两切线之间的弧/曲线</span></span><br><span class="line">ctx.stroke();            <span class="comment">// 进行绘制</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其余总结</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ctx.save() <span class="comment">//保存当前环境的状态</span></span><br><span class="line"></span><br><span class="line">ctx.beginPath() <span class="comment">//开始一个路径</span></span><br><span class="line"></span><br><span class="line">ctx.moveTo() <span class="comment">//移动点来到开始的某点</span></span><br><span class="line">ctx.lineTo() <span class="comment">//让路径中拥有一条到某点的线，但是并不会直接绘制出来</span></span><br><span class="line"></span><br><span class="line">ctx.fill() <span class="comment">//填充当前路径</span></span><br><span class="line">ctx.stroke() <span class="comment">//描边</span></span><br><span class="line"></span><br><span class="line">ctx.closePath() <span class="comment">//结束一个路径</span></span><br><span class="line">ctx.restore() <span class="comment">//返回之前保存过的路径状态和属性</span></span><br><span class="line"></span><br><span class="line">ctx.clearRect(x,y,width,height) <span class="comment">//在给定的矩形内清除指定的像素</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="四-Canvas-实例："><a href="#四-Canvas-实例：" class="headerlink" title="四. Canvas 实例："></a>四. Canvas 实例：</h3><ol>
+<li>画矩形<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>); <span class="comment">//获取HTML &lt;canvas&gt; 元素的引用</span></span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>); <span class="comment">//返回一个对象，该对象提供了用于在画布上绘图的方法和属性。</span></span><br><span class="line">ctx.fillStyle = <span class="string">'green'</span>;<span class="comment">// 填充 </span></span><br><span class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">150</span>, <span class="number">100</span>);<span class="comment">//它的左上角放在(10, 10)，把它的大小设置成宽150高100。</span></span><br></pre></td></tr></table></figure></li>
+<li>倒计时<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"200"</span> <span class="attr">style</span>=<span class="string">"border: 1px solid #000000"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>); <span class="comment">//获取HTML &lt;canvas&gt; 元素的引用</span></span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>); <span class="comment">//返回一个对象，该对象提供了用于在画布上绘图的方法和属性。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//画圆</span></span><br><span class="line"><span class="keyword">var</span> size=c.width;</span><br><span class="line">ctx.arc(size/<span class="number">2</span>, size/<span class="number">2</span>, size/<span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>*<span class="built_in">Math</span>.PI, <span class="literal">false</span>);</span><br><span class="line">ctx.fillStyle=<span class="string">"#000000"</span>;</span><br><span class="line">ctx.fill();</span><br><span class="line">ctx.closePath();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i=<span class="number">1</span>, total=<span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">    ctx.arc(size/<span class="number">2</span>, size/<span class="number">2</span>, size/<span class="number">2</span>, <span class="number">-0.5</span>*<span class="built_in">Math</span>.PI, <span class="number">-0.5</span>*<span class="built_in">Math</span>.PI + <span class="number">2</span>*<span class="built_in">Math</span>.PI/total * (i++), <span class="literal">false</span>);</span><br><span class="line">    ctx.fillStyle=<span class="string">"#ccc"</span>;</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.closePath();</span><br><span class="line">    ctx.restore();</span><br><span class="line"></span><br><span class="line">    ctx.save();</span><br><span class="line">    ctx.textAlign = <span class="string">"center"</span>;</span><br><span class="line">    ctx.textBassline = <span class="string">"middle"</span>;</span><br><span class="line">    ctx.font=<span class="string">"50px Arial"</span>;</span><br><span class="line">    ctx.fillStyle=<span class="string">"green"</span>;</span><br><span class="line">    ctx.fillText(<span class="number">1</span>+ total-i, size/<span class="number">2</span>, size/<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span>(i&gt;total)&#123;</span><br><span class="line">        clearInterval(fun)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fun = setInterval(draw, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/05/18/SVG/" data-toggle="tooltip" data-placement="top" title="SVG">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/09/06/Sass/" data-toggle="tooltip" data-placement="top" title="Sass">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    <!-- Copyright &copy; ∞∞ 2023  -->
+                    Copyright &copy; ∞∞ 2016
+                    <br>
+                    <a href="https://github.com/dongxiaomin" target="_blank" rel="noopener">https://github.com/dongxiaomin</a> 
+                    <!-- Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe> -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DXM的个人博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Sass - DXM的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2017/09/06/Sass/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">∞∞</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Sass</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        <!-- Posted by DXM on -->
+                        2017-09-06
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><a href="https://www.sass.hk/" target="_blank" rel="noopener">Sass 官方文档</a></p>
+<h3 id="一-概述"><a href="#一-概述" class="headerlink" title="一. 概述"></a>一. 概述</h3><p>SASS是一种CSS的开发工具，提供了许多便利的写法，大大节省了设计者的时间，使得CSS的开发，变得简单和可维护。<br>.SCSS文件就是普通的文本文件，里面可以直接使用CSS语法。文件后缀名是.scss，意思为Sassy CSS。</p>
+<h3 id="二-下载-Sass"><a href="#二-下载-Sass" class="headerlink" title="二. 下载 Sass"></a>二. 下载 Sass</h3><p>sass基于Ruby语言开发而成，因此安装sass前需要安装Ruby。<br>注: mac下自带Ruby无需在安装Ruby<br>    window下安装SASS, 首先需要安装Ruby，先从官网下载Ruby并安装。安装过程中请注意勾选Add Ruby executables to your PATH添加到系统环境变量。可参考 <a href="https://www.sass.hk/install/" target="_blank" rel="noopener">https://www.sass.hk/install/</a></p>
+<ol>
+<li>IOS: <code>sudo gem install sass</code></li>
+<li>Android: <code>gem install sass</code></li>
+</ol>
+<p>安装好后，新建 index.scss 文件</p>
+<ol>
+<li><p>在当前目录执行 <code>sass index.scss index.css</code>, 可自动生成 css 文件</p>
+</li>
+<li><p>SASS提供四个编译风格的选项,一般使用 expanded</p>
+<ul>
+<li>nested：嵌套缩进的css代码，它是默认值。</li>
+<li>expanded：没有缩进的、扩展的css代码。</li>
+<li>compact：简洁格式的css代码。</li>
+<li>compressed：压缩后的css代码。<br>例如: <code>sass --style expanded index.scss index.css</code></li>
+</ul>
+</li>
+<li><p>在线转换工具 <a href="https://www.sass.hk/css2sass/" target="_blank" rel="noopener">https://www.sass.hk/css2sass/</a></p>
+</li>
+</ol>
+<h3 id="三-Sass-使用方法："><a href="#三-Sass-使用方法：" class="headerlink" title="三. Sass 使用方法："></a>三. Sass 使用方法：</h3><ol>
+<li><p>变量: SASS允许使用变量，所有变量以$开头。<br> 应用场景： 整个网页要修改颜色时，可以快速完成</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$blue</span> : <span class="number">#1875e7</span>;　</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">color</span> : <span class="variable">$blue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$side</span> : left;</span><br><span class="line"><span class="selector-class">.rounded</span> &#123;</span><br><span class="line">　<span class="attribute">border</span>-#&#123;<span class="variable">$side</span>&#125;-radius: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计算功能</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">　　　　<span class="attribute">margin</span>: (<span class="number">14px</span>/<span class="number">2</span>);</span><br><span class="line">　　　　<span class="attribute">top</span>: <span class="number">50px</span> + <span class="number">100px</span>;</span><br><span class="line">　　　　<span class="attribute">right</span>: <span class="variable">$var</span> * <span class="number">10%</span>;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">　　　　hi &#123;</span><br><span class="line">　　　　　　<span class="attribute">color</span>:red;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 在嵌套的代码块内，可以使用&amp;引用父元素。比如a:hover伪类，可以写成：</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">　　　　&amp;<span class="selector-pseudo">:hover</span> &#123; <span class="attribute">color</span>: <span class="number">#ffb3ff</span>; &#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注释</p>
+</li>
+</ol>
+<ul>
+<li>标准的CSS注释 /* comment */ ，会保留到编译后的文件。</li>
+<li>单行注释 // comment，只保留在SASS源文件中，编译后被省略。</li>
+<li>在/*后面加一个感叹号，表示这是”重要注释”。即使是压缩模式编译，也会保留这行注释，通常可以用于声明版权信息。<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!</span></span><br><span class="line"><span class="comment">    重要注释！</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="5">
+<li><p>代码的重用</p>
+<p> (1) 继承<br> SASS允许一个选择器，继承另一个选择器。比如，现有class1：</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.class1</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ddd</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> class2要继承class1，就要使用@extend命令：</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.class2</span> &#123;</span><br><span class="line">    <span class="keyword">@extend</span> .class1;</span><br><span class="line">　　<span class="attribute">font-size</span>:<span class="number">120%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr /><hr />
+ (2) mixin
+
+<p> Mixin有点像C语言的宏（macro），是可以重用的代码块。<br> 使用@mixin命令，定义一个代码块。</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> left &#123;</span><br><span class="line">　　　　<span class="attribute">float</span>: left;</span><br><span class="line">　　　　<span class="attribute">margin-left</span>: <span class="number">10px</span>;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p> 使用@include命令，调用这个mixin。</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">　　　　<span class="keyword">@include</span> left;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<hr /><hr />
+ (3) 插入文件
+
+<p> @import命令，用来插入外部文件 <code>@import &quot;path/filename.scss&quot;;</code></p>
+<p> 如果插入的是.css文件，则等同于css的import命令。 <code>@import &quot;foo.css&quot;;</code></p>
+</li>
+</ol>
+<p><a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">参考文档</a></p>
+<h3 id="四-Sass-重要实例："><a href="#四-Sass-重要实例：" class="headerlink" title="四. Sass 重要实例："></a>四. Sass 重要实例：</h3><p><strong>rem 移动端布局实例</strong><br>414px屏幕下开发，1rem = 100px;</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> userem(<span class="variable">$size</span>)&#123;</span><br><span class="line">	<span class="variable">$shebei-list</span>:<span class="number">320px</span>,<span class="number">360px</span>,<span class="number">375px</span>,<span class="number">414px</span>,<span class="number">384px</span>,<span class="number">412px</span>,<span class="number">640px</span>,<span class="number">768px</span>;</span><br><span class="line">	<span class="selector-tag">html</span>&#123;</span><br><span class="line">		<span class="keyword">@each</span> <span class="variable">$shebei</span> in <span class="variable">$shebei-list</span>&#123;</span><br><span class="line">			<span class="keyword">@media</span> screen <span class="keyword">and</span> (min-width:<span class="variable">$shebei</span>)&#123;</span><br><span class="line">				<span class="attribute">font-size</span>:<span class="number">100px</span> * (<span class="variable">$shebei</span>/<span class="variable">$size</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@include</span> userem(<span class="number">414px</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">320px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">77.2946859903px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">360px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">86.9565217391px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">375px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">90.5797101449px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">414px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">384px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">92.7536231884px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">412px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">99.5169082126px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">640px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">154.5893719807px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">185.5072463768px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/03/16/Canvas/" data-toggle="tooltip" data-placement="top" title="Canvas">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/05/23/Bootstrap/" data-toggle="tooltip" data-placement="top" title="Bootstrap">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    <!-- Copyright &copy; ∞∞ 2023  -->
+                    Copyright &copy; ∞∞ 2016
+                    <br>
+                    <a href="https://github.com/dongxiaomin" target="_blank" rel="noopener">https://github.com/dongxiaomin</a> 
+                    <!-- Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe> -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

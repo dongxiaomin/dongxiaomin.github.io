@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DXM的个人博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          CSS 总结 - DXM的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2019/10/09/CSS/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">∞∞</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>CSS 总结</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        <!-- Posted by DXM on -->
+                        2019-10-09
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="一-行元素-块元素"><a href="#一-行元素-块元素" class="headerlink" title="一. 行元素 块元素"></a>一. 行元素 块元素</h3><p>块级元素：独占一行，有宽高 div p h1 h2 h3 h4 ul li form table header footer pre</p>
+<p>行内元素: 一行排列不换行，无宽高 a b br i span input select </p>
+<p>行内块状元素： 不自动换行，能够识别宽高</p>
+<h3 id="二-居中"><a href="#二-居中" class="headerlink" title="二. 居中"></a>二. 居中</h3><ol>
+<li>绝对定位: position + transform: translate(-50%, -50%)<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>绝对定位 + 转换<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line">        position: relative;</span><br><span class="line">        width: 400px;</span><br><span class="line">        height: 400px;</span><br><span class="line"><span class="css">        <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#ccc</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line">        position: absolute;</span><br><span class="line">        left: 50%;</span><br><span class="line">        top: 50%;</span><br><span class="line">        transform: translate(-50%, -50%);</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line"><span class="css">        <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#ccc</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>弹性模型: display: flex; justify-content: center; align-items: center;<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>弹性模型<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line">        width: 400px;</span><br><span class="line">        height: 400px;</span><br><span class="line">        display: flex;</span><br><span class="line"><span class="css">        <span class="comment">/* 水平 */</span></span></span><br><span class="line">        justify-content: center; </span><br><span class="line"><span class="css">        <span class="comment">/* 垂直 */</span></span></span><br><span class="line">        align-items: center;</span><br><span class="line">        background: skyblue;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: pink;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>单元格方式: display: table-cell; vertical-align: middle;<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>单元格方式<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line">        display: table-cell;</span><br><span class="line">        text-align: center;</span><br><span class="line">        vertical-align: middle;</span><br><span class="line">        width: 400px;</span><br><span class="line">        height: 400px;</span><br><span class="line">        background: skyblue;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line">        display: inline-block;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: pink;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><a href="https://www.cnblogs.com/0x29a/p/11229348.html" target="_blank" rel="noopener">参考链接</a></p>
+<hr>
+<h3 id="三-清除浮动"><a href="#三-清除浮动" class="headerlink" title="三. 清除浮动"></a>三. 清除浮动</h3><ol>
+<li>新加一个 <code>&lt;div&gt;</code>, clear:both; （不推荐）</li>
+<li>overflow: hidden; （不推荐） </li>
+<li>使用 after <strong>伪元素</strong> 清除浮动  （推荐使用）<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span>&#123;<span class="comment">/*伪元素是行内元素 正常浏览器清除浮动方法*/</span></span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.clearfix</span>&#123;</span><br><span class="line">    *zoom: 1;/*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="四-relative-相对，-absolute-绝对"><a href="#四-relative-相对，-absolute-绝对" class="headerlink" title="四. relative: 相对， absolute: 绝对"></a>四. relative: 相对， absolute: 绝对</h3><h3 id="五-伪元素和伪类的区别"><a href="#五-伪元素和伪类的区别" class="headerlink" title="五. 伪元素和伪类的区别"></a>五. 伪元素和伪类的区别</h3><p>伪类只能使用 :<br>    操作元素本身，如：<code>:hover :first-child :focus</code></p>
+<p>伪元素既可以使用 : 也可以使用 ::(CSS3 引入 ::)<br>    操作元素的子元素，如：<code>::before ::after ::content</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.test</span>&#123;</span></span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        font-size: 40px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.test</span><span class="selector-pseudo">::before</span>&#123;</span></span><br><span class="line">        content: "/:strong";</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.test</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line">        content: "/:strong";</span><br><span class="line"><span class="css">        <span class="selector-tag">color</span><span class="selector-pseudo">:blue</span>;;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>222<span class="tag">&lt;/<span class="name">span</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">span</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::before</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">content</span><span class="selector-pseudo">:"</span>前";</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-tag">span</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">content</span><span class="selector-pseudo">:"</span>后";</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>————————————————- 20200527 更新 ————————————————-</p>
+<h3 id="六-段落后面出现…"><a href="#六-段落后面出现…" class="headerlink" title="六. 段落后面出现…"></a>六. 段落后面出现…</h3><ol>
+<li>单行 text-overflow: ellipsis;<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;<span class="comment">/*出现...*/</span></span><br><span class="line"><span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>; <span class="comment">/*规定文本不进行换行*/</span></span><br></pre></td></tr></table></figure></li>
+<li>多行<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 80<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;</span><br><span class="line"><span class="selector-tag">-webkit-line-clamp</span>: 3;</span><br><span class="line"><span class="selector-tag">-webkit-box-orient</span>: <span class="selector-tag">vertical</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="七-加内外加距宽度不变"><a href="#七-加内外加距宽度不变" class="headerlink" title="七. 加内外加距宽度不变"></a>七. 加内外加距宽度不变</h3><p><code>box-sizing: border-box</code></p>
+<h3 id="八-H5-标签有哪些，语义化布局好处"><a href="#八-H5-标签有哪些，语义化布局好处" class="headerlink" title="八. H5 标签有哪些，语义化布局好处"></a>八. H5 标签有哪些，语义化布局好处</h3><p>根据内容的结构化（内容语义化），选择合适的标签（代码语义化）便于开发者阅读和写出更优雅的代码的同时让浏览器的爬虫和机器很好地解析。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">article：用于定义一篇文章</span><br><span class="line">header：用于定义页面的头部</span><br><span class="line">footer：用于定义页面的底部</span><br><span class="line">nav：导航条链接</span><br><span class="line">section：定义一个区域</span><br></pre></td></tr></table></figure>
+<p>好处：</p>
+<ol>
+<li>有意义的标签使得页面结构化，即使去掉css样式页面也能以一种清晰的结构展现。</li>
+<li>结构清晰，利于维护。</li>
+<li>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页。</li>
+<li>通常语义化HTML会使代码变的更少，使页面加载更快。</li>
+<li>有利于SEO（搜索引擎优化），语义化标签可以和搜索引擎建立良好沟通，有助于爬虫抓。<br><code>＜meta name=&quot;参数&quot; content=&quot;具体的参数值&quot;＞</code><br>content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。<br> <strong>注: 5 可以不说</strong><br> html5语义化标签不会对SEO造成重大的影响，它并不会影响你的网站排名以及抓取。<br> 语义化标签主要是为了让搜索引擎更加的懂你，更加的明白你的网站。</li>
+</ol>
+<h3 id="九-网页布局四种方式"><a href="#九-网页布局四种方式" class="headerlink" title="九. 网页布局四种方式"></a>九. 网页布局四种方式</h3><ol>
+<li><p>静态布局：居中布局，所有样式使用绝对宽度/高度(px)，设计一个Layout，在屏幕宽高有调整时，使用横向和竖向的滚动条来查阅被遮掩部分。 </p>
+</li>
+<li><p>自适应布局：使用 @media 媒体查询给不同尺寸和介质的设备切换不同的样式。</p>
+</li>
+<li><p><strong>流式布局</strong>：使用百分比定义宽度，高度大都是用px来固定，可以根据可视区域 (viewport) 和父元素的实时尺寸进行调整，尽可能的适应各种分辨率。</p>
+</li>
+<li><p><strong>响应式布局</strong>：媒体查询+流式布局。使用@media媒体查询和网格系统配合相对布局单位进行布局，就是综合响应式、流动等上述技术通过 CSS 给单一网页不同设备返回不同样式的技术统称。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态布局</td>
+<td>毫无灵活性可言，目前已逐渐被淘汰。</td>
+</tr>
+<tr>
+<td>自适应布局</td>
+<td>静态布局的升级版，因其强大的灵活性，已逐渐成为高端网页的代名词。<strong>(media)</strong></td>
+</tr>
+<tr>
+<td>流式布局</td>
+<td>灵活性更高，可适用于其他三种网站布局。<strong>(100%)</strong></td>
+</tr>
+<tr>
+<td>响应式布局</td>
+<td>自适应布局的升级版，响应式网站要普遍适应市面上各类屏幕，开发难度和工作量都是非常大的，开发价格自然比普通网站高。<strong>(media+100%)</strong></td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>————————————————- 20200728 更新 ————————————————-</p>
+<h3 id="十-标准盒模型、IE盒模型"><a href="#十-标准盒模型、IE盒模型" class="headerlink" title="十. 标准盒模型、IE盒模型"></a>十. 标准盒模型、IE盒模型</h3><p>标准盒模型:<br>width = width(内容（content）的宽度)</p>
+<p>IE盒模型（也称为怪异盒模型）:<br>width = width内容（content）的宽度 + border + padding </p>
+<h3 id="十一-em-相对于父元素字体大小-rem-相对于根元素"><a href="#十一-em-相对于父元素字体大小-rem-相对于根元素" class="headerlink" title="十一. em 相对于父元素字体大小, rem 相对于根元素."></a>十一. em 相对于父元素字体大小, rem 相对于根元素.</h3><h3 id="十二-BEM-命名规范"><a href="#十二-BEM-命名规范" class="headerlink" title="十二. BEM 命名规范"></a>十二. BEM 命名规范</h3><p>Block Element Modifier</p>
+<h3 id="十三-Pre"><a href="#十三-Pre" class="headerlink" title="十三. Pre"></a>十三. Pre</h3><p>被包围在 <code>pre</code> 标签 元素中的文本通常会保留空格和换行符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre&gt;</span><br><span class="line">此例演示如何使用 pre 标签</span><br><span class="line">对空行和 空格</span><br><span class="line">进行控制</span><br><span class="line">&lt;&#x2F;pre&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="十四-Sticky-属性-固定头部"><a href="#十四-Sticky-属性-固定头部" class="headerlink" title="十四. Sticky 属性: 固定头部"></a>十四. Sticky 属性: 固定头部</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">position: sticky;</span><br><span class="line">top: 0;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/10/10/React/" data-toggle="tooltip" data-placement="top" title="React">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/06/20/Git/" data-toggle="tooltip" data-placement="top" title="Github 命令">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    <!-- Copyright &copy; ∞∞ 2023  -->
+                    Copyright &copy; ∞∞ 2016
+                    <br>
+                    <a href="https://github.com/dongxiaomin" target="_blank" rel="noopener">https://github.com/dongxiaomin</a> 
+                    <!-- Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks" target="_blank" rel="noopener">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe> -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
